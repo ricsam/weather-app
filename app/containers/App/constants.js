@@ -10,3 +10,9 @@
  */
 
 export const DEFAULT_LOCALE = 'en';
+export const GET_TILES = 'weather-app/App/GET_TILES';
+export const SAVE_TILES = 'weather-app/App/SAVE_TILES';
+export const SET_TILES = 'weather-app/App/SET_TILES';
+
+export const REMOVE_TILE = 'weather-app/App/REMOVE_TILE';
+export const PUSH_TILE = 'weather-app/App/PUSH_TILE';

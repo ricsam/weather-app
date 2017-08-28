@@ -15,6 +15,13 @@ const makeSelectLocationState = () => {
   };
 };
 
+const makeSelectLoadingTile_success = () => {
+  return (state) => {
+    return state.get('app').get('tiles');
+  }
+};
+
 export {
   makeSelectLocationState,
+  makeSelectLoadingTile_success,
 };

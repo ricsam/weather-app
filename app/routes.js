@@ -23,11 +23,31 @@ export default function createRoutes(store) {
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/HomePage'),
+
+          import('containers/Search/reducer'),
+          import('containers/Search/sagas'),
+
+          import('containers/Tiles/reducer'),
+
+          import('containers/Tile/reducer'),
+          import('containers/Tile/sagas'),
+
+          /* the app reducer is included by default in reducers.js */
+          import('containers/App/sagas'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([component]) => {
+        importModules.then(([component, searchReducer, searchSagas, tilesReducer, tileReducer, tileSagas, appSagas]) => {
+          injectReducer('search', searchReducer.default);
+          injectReducer('tile', tileReducer.default);
+
+          injectReducer('tiles', tilesReducer.default);
+
+          injectSagas(searchSagas.default);
+          injectSagas(tileSagas.default);
+          injectSagas(appSagas.default);
+
           renderRoute(component);
         });
 
