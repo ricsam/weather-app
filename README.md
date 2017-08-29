@@ -10,7 +10,7 @@ The content of the application can be found in /app folder.
 5. Run `npm run build` to build the project
 
 ## About
-The gist of the application consists of the (containers)[https://github.com/ricsam/weather-app/tree/master/app/containers]
+The gist of the application consists of the [containers](https://github.com/ricsam/weather-app/tree/master/app/containers)
   * App
   * HomePage
   * Search
@@ -26,4 +26,4 @@ The gist of the application consists of the (containers)[https://github.com/rics
 ## Design
 The general dataflow of the application looks like this, not everything is inlcuded in this flowchart:
 
-(Flowchart)[https://raw.githubusercontent.com/ricsam/weather-app/master/weather%20app.png]
+![Flowchart](https://raw.githubusercontent.com/ricsam/weather-app/master/weather%20app.png)
