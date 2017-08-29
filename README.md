@@ -28,3 +28,8 @@ The gist of the application consists of the [containers](https://github.com/rics
 The general dataflow of the application looks like this, not everything is inlcuded in this flowchart:
 
 ![Flowchart](https://raw.githubusercontent.com/ricsam/weather-app/master/weather%20app.png)
+
+## Some thoughts about the current application, mainly a TODO:
+  * Move html component code from the containers into new components.
+  * Fix the CSS and HTML to match the design specification.
+  * Cleanup the tile folder.
