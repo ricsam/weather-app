@@ -14,7 +14,7 @@ The app is created using <a href="https://github.com/react-boilerplate/react-boi
 5. Run `npm run build` to build the project
 
 ## “Features”
-1. There are no tests eslint has not been configured, thus the command npm test will throw errors.
+1. There are no tests and eslint has not been configured, thus the command npm test will throw errors.
 
 ## About
 The gist of the application consists of the <a href="https://github.com/ricsam/weather-app/tree/master/app/containers" target="_blank">containers</a>
