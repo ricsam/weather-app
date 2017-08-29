@@ -40,3 +40,4 @@ The general dataflow of the application looks like this, not everything is inlcu
   * Move html component code from the containers into new components.
   * Fix the CSS and HTML to match the design specification.
   * Cleanup the tile folder.
+  * Refactor app.js, remove react-router
