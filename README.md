@@ -16,7 +16,8 @@ The gist of the application consists of the [containers](https://github.com/rics
   * Search
   * Tile
   * Tiles
-
+  
+### The containers
   * App handles the inter-container flowing data
   * HopePage is the first container rendered, hosting Search and Tiles
   * Search consists of the search box which handles selection of a weather location.
