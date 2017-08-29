@@ -2,7 +2,7 @@
 The content of the application can be found in /app folder.
 
 ## Demo
-[https://ricsam.github.io/weather-app](https://ricsam.github.io/weather-app){:target="_blank"}
+<a href="https://ricsam.github.io/weather-app" target="_blank">https://ricsam.github.io/weather-app</a>
 
 ## Quick start
 
@@ -13,7 +13,7 @@ The content of the application can be found in /app folder.
 5. Run `npm run build` to build the project
 
 ## About
-The gist of the application consists of the [containers](https://github.com/ricsam/weather-app/tree/master/app/containers){:target="_blank"}
+The gist of the application consists of the <a href="https://github.com/ricsam/weather-app/tree/master/app/containers" target="_blank">containers</a>
   * App
   * HomePage
   * Search
