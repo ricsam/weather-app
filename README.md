@@ -1,6 +1,9 @@
 ## Weather App
 The content of the application can be found in /app folder.
 
+## Demo
+[https://ricsam.github.io/weather-app](https://ricsam.github.io/weather-app){:target="_blank"}
+
 ## Quick start
 
 1. Clone this repo using `git clone --depth=1 https://github.com/ricsam/weather-app`
@@ -10,7 +13,7 @@ The content of the application can be found in /app folder.
 5. Run `npm run build` to build the project
 
 ## About
-The gist of the application consists of the [containers](https://github.com/ricsam/weather-app/tree/master/app/containers)
+The gist of the application consists of the [containers](https://github.com/ricsam/weather-app/tree/master/app/containers){:target="_blank"}
   * App
   * HomePage
   * Search
