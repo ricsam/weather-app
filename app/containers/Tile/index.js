@@ -14,7 +14,10 @@ import {
   CardTitle as bsCardTitle,
   CardText,
   ListGroup,
-  ListGroupItem
+  ListGroupItem,
+  Container,
+  Row,
+  Col
 } from 'reactstrap';
 
 import {
@@ -46,15 +49,28 @@ const CardTitle = styled(bsCardTitle)`
 `;
 
 const Temperature = styled.span`
-  float: right;
-  font-size: 120px;
-  margin-top: 40px;
+  font-size: 80px;
+  position: relative;
+
   &:after {
     font-size: 20px;
     font-weight: bold;
     content: "°C"
     position: relative;
-    top: -70px;
+    top: -40px;
+  }
+  display: block;
+  width: 100%;
+  text-align: left;
+  top: 15px;
+
+  @media (min-width: 992px) {
+    top: 65px;
+    display: inline;
+    font-size: 120px;
+    &:after {
+      top: -70px;
+    }
   }
 `;
 
@@ -77,6 +93,13 @@ const Title = styled.span`
 const Loading = styled.i`
   font-size: 50px;
   display: block;
+  text-align: center;
+`;
+
+const TextCol = styled(Col)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 `;
 
@@ -136,10 +159,30 @@ export class Tile extends React.Component { // eslint-disable-line react/prefer-
     this.props.saveTiles();
   }
   componentDidMount() {
+    this.getWeather();
+  }
+
+  getWeather(station = this.props.weatherStation) {
     this.setState({
       weatherLoading: true,
     });
-    requestWeather(this.props.weatherStation).then(this.setWeather.bind(this));
+    requestWeather(station).then(this.setWeather.bind(this));
+  }
+  getForecast(station = this.props.weatherStation) {
+    this.setState({
+      forecastLoading: true,
+    });
+    requestForecast(station).then(this.setForecast.bind(this));
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps, this.props);
+    if (nextProps.weatherStation !== this.props.weatherStation) {
+      this.getWeather(nextProps.weatherStation);
+      if (this.state.forecast) {
+        this.getForecast(nextProps.weatherStation);
+      }
+    }
   }
 
   setWeather(action) {
@@ -169,12 +212,6 @@ export class Tile extends React.Component { // eslint-disable-line react/prefer-
     }
   }
 
-  getForecast() {
-    this.setState({
-      forecastLoading: true,
-    });
-    requestForecast(this.props.weatherStation).then(this.setForecast.bind(this));
-  }
 
   render() {
     return (
@@ -186,40 +223,47 @@ export class Tile extends React.Component { // eslint-disable-line react/prefer-
           </Title>
         </CardTitle>
         <CardText>
-          {this.props.weatherLoading &&
+          {this.state.weatherLoading &&
             <Loading className="fa fa-spinner fa-spin" />
           }
-          {this.state.weather && (
+          {!this.state.weatherLoading && this.state.weather && (
             <span>
               {this.state.weather.current.condition.text}
               <img src={this.state.weather.current.condition.icon} />
               <Temperature>{this.state.weather.current.temp_c}</Temperature>
               <br />
-              <Button onClick={this.getForecast.bind(this)}>Forecast</Button>
+              <Button onClick={this.getForecast.bind(this, this.props.weatherStation)}>Forecast</Button>
             </span>
           )}
         </CardText>
-          {this.props.forecastLoading &&
-            <Loading className="fa fa-spinner fa-spin" />
-          }
-          {this.state.forecast && (<div>
-            {console.log(this.state)}
+        {this.state.forecastLoading &&
+          <Loading className="fa fa-spinner fa-spin" />
+        }
+        {!this.state.forecastLoading && this.state.forecast && (<div>
+          <ListGroup>
+            {this.state.forecast.forecastday.map((item, i) => {
+              return (
+                <ListGroupItem key={i}>
+                  <Container fluid>
+                    <Row>
+                      <TextCol>
+                        <img src={item.day.condition.icon} />
+                        {item.day.avgtemp_c}°C
+                      </TextCol>
+                      <TextCol>
+                        <span>{item.day.condition.text}</span>
+                      </TextCol>
+                      <TextCol>
+                        {item.date}
+                      </TextCol>
+                    </Row>
+                  </Container>
+                </ListGroupItem>
+              );
+            })}
+          </ListGroup>
 
-            <ListGroup>
-              {this.state.forecast.forecastday.map((item, i) => {
-                return (
-                  <ListGroupItem key={i}>
-                    <span>
-                      <img src={item.day.condition.icon} />{" "}
-                      {item.day.avgtemp_c}°C - {item.day.condition.text}
-                    </span>
-                    <span style={{'position': 'absolute', 'right': '15px'}}>{item.date}</span>
-                  </ListGroupItem>
-                );
-              })}
-            </ListGroup>
-
-          </div>)}
+        </div>)}
       </Card>
     );
   }
