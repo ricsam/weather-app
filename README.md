@@ -1,5 +1,6 @@
 ## Weather App
 The content of the application can be found in /app folder.
+The app is created using <a href="https://github.com/react-boilerplate/react-boilerplate/" target="_blank">React boilerplate</a>
 
 ## Demo
 <a href="https://ricsam.github.io/weather-app" target="_blank">https://ricsam.github.io/weather-app</a>
@@ -11,6 +12,9 @@ The content of the application can be found in /app folder.
 3. Run `yarn install` or `npm install` in order to install dependencies
 4. Run `npm start` to run the dev server.
 5. Run `npm run build` to build the project
+
+## “Features”
+1. There are no tests eslint has not been configured, thus the command npm test will throw errors.
 
 ## About
 The gist of the application consists of the <a href="https://github.com/ricsam/weather-app/tree/master/app/containers" target="_blank">containers</a>
