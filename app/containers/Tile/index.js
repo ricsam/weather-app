@@ -67,9 +67,9 @@ const Temperature = styled.span`
   @media (min-width: 992px) {
     top: 65px;
     display: inline;
-    font-size: 120px;
+    font-size: 100px;
     &:after {
-      top: -70px;
+      top: -60px;
     }
   }
 `;
